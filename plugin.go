@@ -40,6 +40,6 @@ func Run(in *dt.Msg) (string, error) {
 // will be called the next it's triggered.  This Run/FollowUp design allows us
 // to reset a plugin's state when a user changes conversations.
 func FollowUp(in *dt.Msg) (string, error) {
-    ret := fmt.Sprintf("Oh dear. You hit me to access salesforce ")
-    return ret
+    ret := "Oh dear. You hit me to access salesforce "
+    return ret, null
 }
