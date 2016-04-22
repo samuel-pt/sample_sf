@@ -41,5 +41,5 @@ func Run(in *dt.Msg) (string, error) {
 // to reset a plugin's state when a user changes conversations.
 func FollowUp(in *dt.Msg) (string, error) {
     ret := "Oh dear. You hit me to access salesforce "
-    return ret, null
+    return ret, nil
 }
