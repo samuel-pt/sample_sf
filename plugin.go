@@ -2,7 +2,7 @@ package sample_sf
 
 import (
     "log"
-    "github.com/itsabot/shared/plugin"
+    "github.com/itsabot/abot/shared/plugin"
 )
 
 var p *dt.Plugin
