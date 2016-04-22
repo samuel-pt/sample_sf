@@ -2,6 +2,9 @@ package sample_sf
 
 import (
     "log"
+
+    "github.com/itsabot/abot/shared/datatypes"
+    "github.com/itsabot/abot/shared/nlp"
     "github.com/itsabot/abot/shared/plugin"
 )
 
