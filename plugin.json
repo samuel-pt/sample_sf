@@ -1,0 +1,7 @@
+{
+	"Name": "Sample SF",
+	"Maintainer": "Samuel Alexander <samuel@palmtreeinfotech.com",
+	"AbotVersion": 0.2,
+	"Description": "Sample to get used to abot",
+	"Icon": "https://cdn.rawgit.com/itsabot/plugin_weather/master/assets/images/icon_weather.svg"
+}

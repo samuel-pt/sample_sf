@@ -1,6 +1,7 @@
 package sample_sf
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/itsabot/abot/shared/datatypes"
@@ -48,9 +49,7 @@ func init() {
 				return "What is your salesforce username?"
 			},
 			OnInput: func(in *dt.Msg) {
-				if len(cities) > 0 {
-					p.SetMemory(in, "sf_username", in.Sentence)
-				}
+				p.SetMemory(in, "sf_username", in.Sentence)
 			},
 			Complete: func(in *dt.Msg) (bool, string) {
 				return p.HasMemory(in, "sf_username"), ""
@@ -62,9 +61,7 @@ func init() {
 				return "What is your salesforce password?"
 			},
 			OnInput: func(in *dt.Msg) {
-				if len(cities) > 0 {
-					p.SetMemory(in, "sf_password", "*******")
-				}
+				p.SetMemory(in, "sf_password", "*******")
 			},
 			Complete: func(in *dt.Msg) (bool, string) {
 				return p.HasMemory(in, "sf_password"), ""
@@ -84,7 +81,7 @@ func handleSF(in *dt.Msg) (resp string) {
 	sf_password := p.GetMemory(in, "sf_password")
 	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password))
 
-	return fmt.Springf("Haha... Trying to access SF with %s and with password %s",
+	return fmt.Sprintf("Haha... Trying to access SF with %s and with password %s",
 		sf_username, sf_password)
 }
 
@@ -94,6 +91,6 @@ func handleWave(in *dt.Msg) (resp string) {
 	sf_password := p.GetMemory(in, "sf_password")
 	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password))
 
-	return fmt.Springf("Haha... Trying to access SF Wave with %s and with password %s",
+	return fmt.Sprintf("Haha... Trying to access SF Wave with %s and with password %s",
 		sf_username, sf_password)
 }
