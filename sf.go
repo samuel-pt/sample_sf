@@ -68,6 +68,15 @@ func init() {
 			},
 			SkipIfComplete: true,
 		},
+		dt.State{
+			OnEntry: func(in *dt.Msg) string {
+				return handleSF(in)
+			},
+			OnInput: func(in *dt.Msg) {},
+			Complete: func(in *dt.Msg) (bool, string) {
+				return true, ""
+			},
+		},
 	}})
 
 	if err = plugin.Register(p); err != nil {
@@ -77,9 +86,18 @@ func init() {
 
 func handleSF(in *dt.Msg) (resp string) {
 	sf_username := p.GetMemory(in, "sf_username")
-	p.Log.Info(fmt.Sprintf("SF User from Cache %s  ", sf_username))
+	if len(sf_username.Val) == 0 {
+		p.Log.Info(fmt.Sprintf("Empty username from Cache..."))
+		return ""
+	}
+	p.Log.Info(fmt.Sprintf("SF User from Cache %s  ", sf_username.Val))
+
 	sf_password := p.GetMemory(in, "sf_password")
-	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password))
+	if len(sf_password.Val) == 0 {
+		p.Log.Info(fmt.Sprintf("Empty password from Cache..."))
+		return ""
+	}
+	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password.Val))
 
 	return fmt.Sprintf("Haha... Trying to access SF with %s and with password %s",
 		sf_username, sf_password)
@@ -87,9 +105,18 @@ func handleSF(in *dt.Msg) (resp string) {
 
 func handleWave(in *dt.Msg) (resp string) {
 	sf_username := p.GetMemory(in, "sf_username")
-	p.Log.Info(fmt.Sprintf("SF User from Cache %s  ", sf_username))
+	if len(sf_username.Val) == 0 {
+		p.Log.Info(fmt.Sprintf("Empty username from Cache..."))
+		return ""
+	}
+	p.Log.Info(fmt.Sprintf("SF User from Cache %s  ", sf_username.Val))
+
 	sf_password := p.GetMemory(in, "sf_password")
-	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password))
+	if len(sf_password.Val) == 0 {
+		p.Log.Info(fmt.Sprintf("Empty password from Cache..."))
+		return ""
+	}
+	p.Log.Info(fmt.Sprintf("SF Password from Cache %s  ", sf_password.Val))
 
 	return fmt.Sprintf("Haha... Trying to access SF Wave with %s and with password %s",
 		sf_username, sf_password)
